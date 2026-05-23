@@ -269,6 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daeb9285e5b597b4db6f1edc6d2503ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowPlayer
+  offsetY: 1
+  offsetZ: -3.5
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6680058f84bc089e4b6081f38050ed32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  movementSpeed: 5
+  moveSpeed: 5
   jumpHeight: 50
 --- !u!65 &1700030295
 BoxCollider:
