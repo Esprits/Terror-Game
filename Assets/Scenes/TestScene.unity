@@ -735,8 +735,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6680058f84bc089e4b6081f38050ed32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 5
-  jumpHeight: 50
+  moveSpeed: 4
+  runMult: 1.75
+  jumpHeight: 35
 --- !u!65 &1700030295
 BoxCollider:
   m_ObjectHideFlags: 0

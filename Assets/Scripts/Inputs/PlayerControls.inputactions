@@ -16,18 +16,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
+                    "name": "Run",
                     "type": "Button",
-                    "id": "1bb7b31c-f742-4e6f-983c-0f8a060928e7",
+                    "id": "c9f5bf02-79cb-4434-a42d-a2923d5b2aa8",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sprint",
+                    "name": "Jump",
                     "type": "Button",
-                    "id": "c9f5bf02-79cb-4434-a42d-a2923d5b2aa8",
+                    "id": "1bb7b31c-f742-4e6f-983c-0f8a060928e7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -185,7 +185,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sprint",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -196,7 +196,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sprint",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -207,7 +207,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sprint",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
