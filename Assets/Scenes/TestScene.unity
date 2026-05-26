@@ -317,11 +317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d67b35b47d5ebb0942bdbbbd14f7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
-  orientation: {fileID: 1229274075}
+  testFramerate: 144
   player: {fileID: 478190552}
-  playerObj: {fileID: 2144711759}
-  rb: {fileID: 478190551}
-  rotationSpeed: 0
+  orientation: {fileID: 1229274075}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +460,7 @@ GameObject:
   - component: {fileID: 478190554}
   - component: {fileID: 478190553}
   m_Layer: 0
-  m_Name: Player2
+  m_Name: Terror
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -525,8 +523,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 10
-  runMult: 1.75
-  jumpHeight: 35
+  runMult: 1.5
+  jumpHeight: 40
+  rotationSpeed: 7
   orientation: {fileID: 1229274075}
 --- !u!114 &478190554
 MonoBehaviour:
@@ -1049,7 +1048,7 @@ GameObject:
   - component: {fileID: 1859711101}
   - component: {fileID: 1859711100}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1161,7 +1160,7 @@ GameObject:
   - component: {fileID: 2144711761}
   - component: {fileID: 2144711760}
   m_Layer: 0
-  m_Name: PlayerObj
+  m_Name: TerrorObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

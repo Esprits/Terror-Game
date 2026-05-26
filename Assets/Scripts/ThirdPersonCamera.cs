@@ -3,12 +3,8 @@ using UnityEngine;
 public class ThirdPersonCamera : MonoBehaviour
 {
     [Header("References")]
-    public Transform orientation;
     public Transform player;
-    public Transform playerObj;
-    public Rigidbody rb;
-
-    public float rotationSpeed;
+    public Transform orientation;
 
     void Start()
     {
@@ -18,7 +14,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void Update()
     {
-        // Calculate the direction that will be "forward" for the orientation based on the camera
+        // Calculate the direction that will be "forward" for the orientation based on the camera and Terror's position
         Vector3 viewDirection = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDirection.normalized;
     }
