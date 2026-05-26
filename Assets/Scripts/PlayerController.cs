@@ -13,15 +13,21 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 40f;
     [Tooltip("How fast Terror turns around")]
     public float rotationSpeed = 7f;
+    [Tooltip("How fast Terror stops when not moving anymore")]
+    public float groundDrag = 3f;
+    [Tooltip("Terror's height")]
+    public float playerHeight = 1f;
 
     [Header("References")]
     public Transform orientation;
+    public LayerMask groundLayer;
     Rigidbody rb;
 
     Vector3 moveDirection;
     float moveHorizontalInput;
     float moveVerticalInput;
     float originalMoveSpeed;
+    bool onGround;
 
     void Start()
     {
@@ -30,6 +36,21 @@ public class PlayerController : MonoBehaviour
 
         // Stores the original speed (when not running)
         originalMoveSpeed = moveSpeed;
+    }
+
+    void Update()
+    {
+        onGround = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, playerHeight * 0.5f + 0.2f, groundLayer);
+        Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f + 0.2f), Color.red); // Show Raycast
+
+        if (onGround)
+        {
+            rb.linearDamping = groundDrag;
+        }
+        else
+        {
+            rb.linearDamping = 0;
+        }
     }
 
     void FixedUpdate()
@@ -60,8 +81,7 @@ public class PlayerController : MonoBehaviour
 
     void OnJump(InputValue input)
     {
-        // TODO Check if on ground
-        if (input.isPressed)
+        if (input.isPressed && onGround)
         {
             // Adds a vertical (Vector3.up = new Vector(0, 1, 0)) force to Terror, making him jump
             rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);

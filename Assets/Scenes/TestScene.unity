@@ -317,7 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d67b35b47d5ebb0942bdbbbd14f7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
-  testFramerate: 144
   player: {fileID: 478190552}
   orientation: {fileID: 1229274075}
 --- !u!1 &410087039
@@ -526,7 +525,12 @@ MonoBehaviour:
   runMult: 1.5
   jumpHeight: 40
   rotationSpeed: 7
+  groundDrag: 5
+  playerHeight: 1
   orientation: {fileID: 1229274075}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &478190554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,7 +634,7 @@ GameObject:
   - component: {fileID: 969272879}
   - component: {fileID: 969272878}
   - component: {fileID: 969272877}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TempFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
