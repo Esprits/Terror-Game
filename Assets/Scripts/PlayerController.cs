@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        GameObject.Find("Velocity").GetComponent<TextMeshProUGUI>().text = "Velocity: " + rb.linearVelocity.magnitude;
+        LimitVelocity();
+
         onGround = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, playerHeight * 0.5f + 0.2f, groundLayer);
         Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f + 0.2f), Color.red); // Show Raycast
 
@@ -98,18 +101,21 @@ public class PlayerController : MonoBehaviour
 
         if (moveDirection != Vector3.zero) // Add force only if Terror is actually moving
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 20f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
             // Make Terror face turn towards the direction he is moving smoothly using Slerp
             transform.forward = Vector3.Slerp(transform.forward, moveDirection.normalized, Time.fixedDeltaTime * rotationSpeed);
         }
+    }
 
-        // TODO     Make the capsule float
-        // -            - Add a raycast under it
-        // -            - Make it so that the raycast makes sure there's always a specific distance between the player and the ground
-        // -            - Doing so will be useful for uneven grounds and slopes in the future
-        // -        Add maximum speed & acceleration parameters
-        // -            - Most important part is limiting the maximum velocity when sprinting and especially jumping
-        // -            - Somehow check if it would be possible to lower the current force applied with moving when jumping or something that would have a similar effect
-        // -        For the love of God, please don't overthink this whole thing, just make a basic movement system
+    void LimitVelocity()
+    {
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+
+        if (flatVel.magnitude > moveSpeed)
+        {
+            // Reset the velocity by normalising it and then multiplying it by what the move speed is supposed to be
+            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+        }
     }
 }
