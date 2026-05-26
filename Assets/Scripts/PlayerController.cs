@@ -6,17 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Settings")]
     [Tooltip("How fast Terror moves")]
-    public float moveSpeed = 10f;
+    public float moveSpeed;
     [Tooltip("Multiplier to add to Terror's speed while running")]
-    public float runMult = 1.5f;
+    public float runMult;
     [Tooltip("How high Terror jumps")]
-    public float jumpHeight = 40f;
+    public float jumpHeight;
     [Tooltip("How fast Terror turns around")]
-    public float rotationSpeed = 7f;
+    public float rotationSpeed;
     [Tooltip("How fast Terror stops when not moving anymore")]
-    public float groundDrag = 3f;
+    public float groundDrag;
     [Tooltip("Terror's height")]
-    public float playerHeight = 1f;
+    public float playerHeight;
 
     [Header("References")]
     public Transform orientation;
