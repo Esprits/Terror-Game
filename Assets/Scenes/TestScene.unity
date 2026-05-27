@@ -591,6 +591,7 @@ MonoBehaviour:
   rotationSpeed: 7.5
   groundDrag: 5
   playerHeight: 1
+  airMoveMult: 0.4
   orientation: {fileID: 1229274075}
   groundLayer:
     serializedVersion: 2

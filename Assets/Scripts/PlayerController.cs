@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public float groundDrag;
     [Tooltip("Terror's height")]
     public float playerHeight;
+    [Tooltip("Multiplier to add to Terror's speed while in the air")]
+    public float airMoveMult;
 
     [Header("References")]
     public Transform orientation;
@@ -86,8 +88,7 @@ public class PlayerController : MonoBehaviour
     {
         if (input.isPressed && onGround)
         {
-            // Adds a vertical (Vector3.up = new Vector(0, 1, 0)) force to Terror, making him jump
-            rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+            Jump();
         }
     }
 
@@ -101,7 +102,15 @@ public class PlayerController : MonoBehaviour
 
         if (moveDirection != Vector3.zero) // Add force only if Terror is actually moving
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            // The move speed will vary depending on if Terror is in the air or not
+            if (onGround)
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            }
+            else
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMoveMult, ForceMode.Force);
+            }
             // Make Terror face turn towards the direction he is moving smoothly using Slerp
             transform.forward = Vector3.Slerp(transform.forward, moveDirection.normalized, Time.fixedDeltaTime * rotationSpeed);
         }
@@ -117,5 +126,14 @@ public class PlayerController : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
         }
+    }
+
+    void Jump()
+    {
+        // Always set the vertical velocity back to 0 before jumping
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+
+        // Adds a vertical (Vector3.up = new Vector(0, 1, 0)) force to Terror, making him jump
+        rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
     }
 }
